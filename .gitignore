@@ -1,1 +1,6 @@
 /venv
+.vscode
+test.py
+dist
+build
+joyrec.egg-info
