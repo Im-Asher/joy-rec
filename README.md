@@ -24,3 +24,18 @@
 
     交互界面模块用于为用户提供推荐服务的交互界面。这个模块通常包括移动应用程序、Web应用程序、桌面应用程序等子模块。
 ---
+## 模块
+- Datasets 
+  - 提供样例数据集
+- DataLoader
+  - 提供数据集处理
+- Pipeline 
+  - 提供流水线处理
+- Models
+  - 推荐模型
+- Metrics
+  - 评估指标
+- Visualization
+  - 可视化
+- Service
+  - 服务化部署
