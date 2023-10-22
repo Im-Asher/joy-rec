@@ -80,7 +80,7 @@ class UserInfo:
 
 class Movielens(Dataset):
     def __init__(self,
-                 data_file: str,
+                 data_file: str=None,
                  mode: str = 'train',
                  test_ratio: float = 0.2,
                  rand_seed: int = 0,
@@ -97,6 +97,9 @@ class Movielens(Dataset):
 
         self.split_ratio = test_ratio
         self.rand_seed = rand_seed
+
+        self._load_meta_info()
+        self._load_data()
 
     def _load_meta_info(self):
         pattern = re.compile(r'^(.*)\((\d+)\)$')
@@ -142,8 +145,8 @@ class Movielens(Dataset):
 
         is_test = self.mode == "test"
 
-        with zipfile.Zipfile(self.data_file) as file:
-            with file.open("ml-1m/ratings.ddt") as rating:
+        with zipfile.ZipFile(self.data_file) as file:
+            with file.open("ml-1m/ratings.dat") as rating:
                 for line in rating:
                     line = line.decode(encoding='latin')
                     if (np.random.random() < self.split_ratio) == is_test:

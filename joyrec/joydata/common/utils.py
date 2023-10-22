@@ -7,7 +7,7 @@ import hashlib
 from tqdm import tqdm
 
 
-HOME = os.path.expanduser('~')
+HOME = os.path.expanduser('/')
 
 DATA_HOME = os.path.join(HOME, '.cache', 'joyrec', 'dataset')
 
@@ -74,7 +74,7 @@ def download(url: str, module_name, md5sum, save_name=None):
                         for data in r.iter_bytes(chunk_size=chunk_size):
                             f.write(data)
                             log_index += 1
-                            bar.update(log_index, {})
+                            bar.update(log_index)
                             if log_index % log_interval == 0:
                                 bar.update(log_index)
 
